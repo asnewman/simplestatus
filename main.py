@@ -39,7 +39,7 @@ def update_rss_feeds(feeds):
                 # Entry does not exist, insert into database
                 c.execute("INSERT INTO entries (title, link, pub_date, feed_name, feed_url) VALUES (?, ?, ?, ?, ?)", (title, link, pub_date, name, url))
                 print(f"New entry added to {name} feed: {title}")
-                send_slack_message(slack_webhook, f"Issue with {name}: {title}")
+                send_slack_message(slack_webhook, f"Issue with {name}: {title} {link}")
 
     # Commit changes to the database and close the connection
     conn.commit()
